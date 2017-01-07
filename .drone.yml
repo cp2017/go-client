@@ -2,9 +2,35 @@ pipeline:
   clone:
     image: plugins/git
     path: github.com/cp2017/go-client
-  test:
+  unit-test:
     image: qnib/golang
     commands:
      - ./test.sh
     environment:
      - GOPATH=/drone/
+  build:
+    image: qnib/golang
+    commands:
+      - go build -o go-client
+    environment:
+     - GOPATH=/drone/
+  smoke-test:
+    image: debian:latest
+    commands:
+      - ./go-client --help
+  slack:
+    image: plugins/slack
+    channel: drone
+    username: drone
+
+services:
+  ipfs:
+   image: qnib/cp2017-ipfs
+   container_name: ipfs
+   pull: true
+  geth:
+   image: cp2017/geth
+   pull: true
+   container_name: geth
+   environment:
+    - GETH_TEST_DATABASE=true
