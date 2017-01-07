@@ -1,4 +1,5 @@
-build:
-  image: golang
-  commands:
-    - ./test.sh
+pipeline:
+  build:
+    image: golang
+    commands:
+     - ./test.sh
