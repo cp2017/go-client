@@ -21,7 +21,7 @@ pipeline:
   smoke-test:
     image: debian:latest
     commands:
-      - ./go-client --help
+      - ./go-client_amd64 --help
   slack:
     image: plugins/slack
     channel: drone
