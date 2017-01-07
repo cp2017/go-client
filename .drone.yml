@@ -15,7 +15,7 @@ pipeline:
   build:
     image: qnib/golang
     commands:
-      - go build -o go-client
+      - go build -o go-client_amd64
     environment:
      - GOPATH=/drone/
   smoke-test:
