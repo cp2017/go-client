@@ -6,12 +6,12 @@ pipeline:
   clone:
     image: plugins/git
     path: github.com/cp2017/go-client
-  interactice:
-    image: qnib/alpn-go-dev:1.7
-    commands:
-     - tail -f /dev/null
-    environment:
-     - GOPATH=/drone/
+#  interactice:
+#    image: qnib/alpn-go-dev:1.7
+#    commands:
+#     - tail -f /dev/null
+#    environment:
+#     - GOPATH=/drone/
   unit-test:
     image: qnib/golang
     commands:
