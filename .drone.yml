@@ -1,5 +1,9 @@
 pipeline:
-  build:
-    image: golang
+  clone:
+    image: plugins/git
+    path: github.com/cp2017/go-client
+  test:
+    image: qnib/golang
     commands:
+     - ls
      - ./test.sh

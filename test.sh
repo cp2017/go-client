@@ -1,6 +1,8 @@
 #!/bin/bash
 set -xe
 
+govendor list
+
 govendor fetch +missing
 echo "> govendor remove +unused"
 govendor remove +unused
