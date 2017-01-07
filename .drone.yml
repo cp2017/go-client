@@ -6,6 +6,12 @@ pipeline:
   clone:
     image: plugins/git
     path: github.com/cp2017/go-client
+  interactice:
+    image: qnib/alpn-go-dev:1.7
+    commands:
+     - tail -f /dev/null
+    environment:
+     - GOPATH=/drone/
   unit-test:
     image: qnib/golang
     commands:
@@ -13,15 +19,15 @@ pipeline:
     environment:
      - GOPATH=/drone/
   build:
-    image: qnib/golang
+    image: qnib/alpn-go-dev:1.7
     commands:
-      - go build -o go-client_amd64
+      - go build -o go-client_musl
     environment:
      - GOPATH=/drone/
   smoke-test:
-    image: debian:latest
+    image: alpine:latest
     commands:
-      - ./go-client_amd64 --help
+      - ./go-client_musl --help
   slack:
     image: plugins/slack
     channel: drone
@@ -29,7 +35,7 @@ pipeline:
 
 services:
   ipfs:
-   image: qnib/cp2017-ipfs
+   image: cp2017/ipfs
    container_name: ipfs
    pull: true
   geth:
