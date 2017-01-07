@@ -1,0 +1,25 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "QPcaNBakWCPVwN6nPGAYPxCoCQk=",
+			"path": "github.com/cp2017/go-client",
+			"revision": "cb8e3f2f825ec850970636ecbd60399d1951c8e9",
+			"revisionTime": "2017-01-07T09:18:22Z"
+		},
+		{
+			"checksumSHA1": "JPyyWNpEgadnXkoRcpwR7LRiLbo=",
+			"path": "github.com/cp2017/go-client/cmd",
+			"revision": "cb8e3f2f825ec850970636ecbd60399d1951c8e9",
+			"revisionTime": "2017-01-07T09:18:22Z"
+		},
+		{
+			"checksumSHA1": "LMu1NsthSqcXfKu0m6YGPAmwBcY=",
+			"path": "github.com/urfave/cli",
+			"revision": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6",
+			"revisionTime": "2016-11-22T04:36:10Z"
+		}
+	],
+	"rootPath": "github.com/cp2017/go-client"
+}
