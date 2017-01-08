@@ -18,10 +18,14 @@ import (
     "fmt"
 
     "github.com/urfave/cli"
+    //"github.com/ipfs/go-ipfs-api"
+    //"github.com/ethereum/go-ethereum/ethclient"
 )
 
-// Monitor a given service from ethereum
-func Monitor(c *cli.Context) error {
+// MonitorIPFS a given service from ethereum
+func MonitorIPFS(c *cli.Context) error {
     fmt.Println(c.FlagNames())
+    //cli, _ := ethclient.Dial("http://localhost:8545")
+    //_ = cli
     return nil
 }

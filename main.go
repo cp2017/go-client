@@ -24,24 +24,44 @@ import (
 
 func main() {
   app := cli.NewApp()
-  app.Name = "gp-client"
+  app.Name = "go-monitor"
   app.Version = "0.0.1"
 
-  app.Commands = []cli.Command{
-    {
-      Name:    "monitor",
-      Aliases: []string{"m"},
-      Usage:   "Monitor a given service",
-      Flags:   []cli.Flag {
-        cli.StringFlag{
-          Name: "ipfs-id, id",
-          Usage: "HASH of service within IPFS",
+  app.Commands = []cli.Command{{
+        Name:    "ipfs",
+        Aliases: []string{"m"},
+        Usage:   "Monitor a given service provided via IPFS",
+        Flags:   []cli.Flag {
+            cli.StringFlag{
+                Name: "ipfs-id, id",
+                Usage: "HASH of service within IPFS",
+            },
         },
-      },
-      Action:  func(c *cli.Context) error {
-        return cmd.Monitor(c)
+        Action:  func(c *cli.Context) error {
+            return cmd.MonitorIPFS(c)
+            },
+    },{
+        Name:    "http",
+        Aliases: []string{"m"},
+        Usage:   "Monitor a given HTTP service",
+        Flags:   []cli.Flag {
+            cli.StringFlag{
+                Name: "url",
+                Usage: "check http-status codes of given URL",
+            },
+            cli.StringFlag{
+                Name: "iterations,i",
+                Usage: "Amount of queries to be made",
+            },
+            cli.StringFlag{
+                Name: "delay,d",
+                Value: "1000",
+                Usage: "Delay between queries in milliseconds",
+            },
         },
-    },
-  }
-  app.Run(os.Args)
+        Action:  func(c *cli.Context) error {
+            return cmd.MonitorHTTP(c)
+        },
+    },}
+    app.Run(os.Args)
 }

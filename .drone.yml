@@ -6,41 +6,54 @@ pipeline:
   clone:
     image: plugins/git
     path: github.com/cp2017/go-client
-#  interactice:
-#    image: qnib/alpn-go-dev:1.7
-#    commands:
-#     - tail -f /dev/null
-#    environment:
-#     - GOPATH=/drone/
   unit-test:
     image: qnib/golang
     commands:
      - ./test.sh
     environment:
      - GOPATH=/drone/
+  smoke-test:
+    image: qnib/golang
+    commands:
+      - go run main.go http --iterations 10 --delay 1000 --url http://localhost:8080
+    environment:
+      - GOPATH=/drone/
   build:
+    image: qnib/golang
+    commands:
+      - mkdir -p resources/bin
+      - go build -o resources/bin/go-client_linux
+      - GOOS=darwin GOARCH=amd64 go build -o resources/bin/go-client_darwin
+    environment:
+      - GOPATH=/drone/
+    when:
+        event: tag
+  build-musl:
     image: qnib/alpn-go-dev:1.7
     commands:
-      - go build -o go-client_musl
+      - go build -o resources/bin/go-client_musl
     environment:
      - GOPATH=/drone/
-  smoke-test:
-    image: alpine:latest
-    commands:
-      - ./go-client_musl --help
+    when:
+        event: tag
   slack:
     image: plugins/slack
     channel: drone
     username: drone
 
 services:
-  ipfs:
-   image: cp2017/ipfs
-   container_name: ipfs
+#  ipfs:
+#   image: cp2017/ipfs
+#   container_name: ipfs
+#   pull: true
+#  geth:
+#   image: cp2017/geth
+#   pull: true
+#   container_name: geth
+#   environment:
+#    - GETH_TEST_DATABASE=true
+  testhttpd:
+   image: cp2017/testhttpd
+   container_name: testhttpd
+   command: "200,200,200,200,500"
    pull: true
-  geth:
-   image: cp2017/geth
-   pull: true
-   container_name: geth
-   environment:
-    - GETH_TEST_DATABASE=true

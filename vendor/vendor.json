@@ -3,16 +3,16 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "QPcaNBakWCPVwN6nPGAYPxCoCQk=",
+			"checksumSHA1": "iygaOXPxu/09QUgo1I3CGzGOw94=",
 			"path": "github.com/cp2017/go-client",
-			"revision": "cb8e3f2f825ec850970636ecbd60399d1951c8e9",
-			"revisionTime": "2017-01-07T09:18:22Z"
+			"revision": "d1d1390d4bc2dac1438119b166eced04d1882fe1",
+			"revisionTime": "2017-01-07T12:09:48Z"
 		},
 		{
-			"checksumSHA1": "JPyyWNpEgadnXkoRcpwR7LRiLbo=",
+			"checksumSHA1": "XmlAAVdOKNYWehmfzu2lB0ZZdKc=",
 			"path": "github.com/cp2017/go-client/cmd",
-			"revision": "cb8e3f2f825ec850970636ecbd60399d1951c8e9",
-			"revisionTime": "2017-01-07T09:18:22Z"
+			"revision": "d1d1390d4bc2dac1438119b166eced04d1882fe1",
+			"revisionTime": "2017-01-07T12:09:48Z"
 		},
 		{
 			"checksumSHA1": "LMu1NsthSqcXfKu0m6YGPAmwBcY=",
