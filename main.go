@@ -25,7 +25,7 @@ import (
 func main() {
   app := cli.NewApp()
   app.Name = "go-monitor"
-  app.Version = "0.0.1"
+  app.Version = "0.1.0"
 
   app.Commands = []cli.Command{{
         Name:    "ipfs",
