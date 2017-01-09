@@ -29,18 +29,47 @@ Running Matrix job #0
 [unit-test:L19:3s] + COVER_FILES='go-client.cover resources/coverity/./cmd.cover'
 [unit-test:L20:3s] + coveraggregator -o coverage-all.out go-client.cover resources/coverity/./cmd.cover
 [unit-test] exit code 0
-[smoke-test:L0:0s] + go run main.go http --iterations 10 --delay 1000 --url http://localhost:8080
-[smoke-test:L1:0s] 2017/01/08 12:29:18 Fetching 'http://localhost:8080' 10 times with a delay of 1000
-[smoke-test:L2:0s] 2017/01/08 12:29:18 [  1] 200 OK
-[smoke-test:L3:1s] 2017/01/08 12:29:19 [  2] 200 OK
-[smoke-test:L4:2s] 2017/01/08 12:29:20 [  3] 200 OK
-[smoke-test:L5:3s] 2017/01/08 12:29:21 [  4] 200 OK
-[smoke-test:L6:4s] 2017/01/08 12:29:22 [  5] 500 Internal Server Error
-[smoke-test:L7:5s] 2017/01/08 12:29:23 [  6] 200 OK
-[smoke-test:L8:6s] 2017/01/08 12:29:24 [  7] 200 OK
-[smoke-test:L9:7s] 2017/01/08 12:29:25 [  8] 200 OK
-[smoke-test:L10:8s] 2017/01/08 12:29:26 [  9] 200 OK
-[smoke-test:L11:9s] 2017/01/08 12:29:27 [ 10] 500 Internal Server Error
-[smoke-test:L12:10s] 2017/01/08 12:29:28 Status: 200 Count: 8
-[smoke-test:L13:10s] 2017/01/08 12:29:28 Status: 500 Count: 2
+[smoke-test:L0:0s] + go run main.go http --iterations 10 --delay 100 --url http://localhost:8080
+[smoke-test:L1:1s] 2017/01/09 21:03:18 Fetching 'http://localhost:8080' 10 times with a delay of 100; validate:''
+[smoke-test:L2:1s] 2017/01/09 21:03:18 [  1] 200 OK
+[smoke-test:L3:1s] 2017/01/09 21:03:18 [  2] 200 OK
+[smoke-test:L4:1s] 2017/01/09 21:03:18 [  3] 200 OK
+[smoke-test:L5:1s] 2017/01/09 21:03:18 [  4] 200 OK
+[smoke-test:L6:1s] 2017/01/09 21:03:18 [  5] 500 Internal Server Error
+[smoke-test:L7:1s] 2017/01/09 21:03:18 [  6] 200 OK
+[smoke-test:L8:1s] 2017/01/09 21:03:18 [  7] 200 OK
+[smoke-test:L9:2s] 2017/01/09 21:03:18 [  8] 200 OK
+[smoke-test:L10:2s] 2017/01/09 21:03:18 [  9] 200 OK
+[smoke-test:L11:2s] 2017/01/09 21:03:19 [ 10] 500 Internal Server Error
+[smoke-test:L12:2s] 2017/01/09 21:03:19 Status: 200 Count: 8
+[smoke-test:L13:2s] 2017/01/09 21:03:19 Status: 500 Count: 2
+[smoke-test:L14:2s] + go run main.go http --iterations 10 --delay 100 --url http://localhost:8080 --validate 200:80,500:20
+[smoke-test:L15:3s] 2017/01/09 21:03:20 Fetching 'http://localhost:8080' 10 times with a delay of 100; validate:'200:80,500:20'
+[smoke-test:L16:3s] 2017/01/09 21:03:20 [  1] 200 OK
+[smoke-test:L17:3s] 2017/01/09 21:03:20 [  2] 200 OK
+[smoke-test:L18:3s] 2017/01/09 21:03:20 [  3] 200 OK
+[smoke-test:L19:3s] 2017/01/09 21:03:20 [  4] 200 OK
+[smoke-test:L20:3s] 2017/01/09 21:03:20 [  5] 500 Internal Server Error
+[smoke-test:L21:3s] 2017/01/09 21:03:20 [  6] 200 OK
+[smoke-test:L22:4s] 2017/01/09 21:03:20 [  7] 200 OK
+[smoke-test:L23:4s] 2017/01/09 21:03:20 [  8] 200 OK
+[smoke-test:L24:4s] 2017/01/09 21:03:21 [  9] 200 OK
+[smoke-test:L25:4s] 2017/01/09 21:03:21 [ 10] 500 Internal Server Error
+[smoke-test:L26:4s] 2017/01/09 21:03:21 Status: 500 Count: 2
+[smoke-test:L27:4s] 2017/01/09 21:03:21 Status: 200 Count: 8
+[smoke-test:L28:4s] + go run main.go http --iterations 8 --delay 100 --url http://localhost:8080 --validate 200:80,500:20 --negate-validate
+[smoke-test:L29:5s] 2017/01/09 21:03:22 Fetching 'http://localhost:8080' 8 times with a delay of 100; validate:'200:80,500:20'
+[smoke-test:L30:5s] 2017/01/09 21:03:22 [  1] 200 OK
+[smoke-test:L31:5s] 2017/01/09 21:03:22 [  2] 200 OK
+[smoke-test:L32:5s] 2017/01/09 21:03:22 [  3] 200 OK
+[smoke-test:L33:5s] 2017/01/09 21:03:22 [  4] 200 OK
+[smoke-test:L34:5s] 2017/01/09 21:03:22 [  5] 500 Internal Server Error
+[smoke-test:L35:5s] 2017/01/09 21:03:22 [  6] 200 OK
+[smoke-test:L36:6s] 2017/01/09 21:03:22 [  7] 200 OK
+[smoke-test:L37:6s] 2017/01/09 21:03:22 [  8] 200 OK
+[smoke-test:L38:6s] 2017/01/09 21:03:23 Status: 200 Count: 7
+[smoke-test:L39:6s] 2017/01/09 21:03:23 Status: 500 Count: 1
+[smoke-test:L40:6s] 2017/01/09 21:03:23 Expected 200:80, found 88
+[smoke-test:L41:6s] 2017/01/09 21:03:23 Validation was false, but as 'negate-validate' was set turn it around
+[smoke-test] exit code 0
 ```
