@@ -58,6 +58,14 @@ func main() {
                 Value: "1000",
                 Usage: "Delay between queries in milliseconds",
             },
+            cli.StringFlag{
+                Name: "validate",
+                Usage: "Comma separated list of code:percentage pairs. No validation if empty.",
+            },
+            cli.BoolFlag{
+                Name: "negate-validate",
+                Usage: "If set negate the result of the validation.",
+            },
         },
         Action:  func(c *cli.Context) error {
             return cmd.MonitorHTTP(c)

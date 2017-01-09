@@ -15,7 +15,9 @@ pipeline:
   smoke-test:
     image: qnib/golang
     commands:
-      - go run main.go http --iterations 10 --delay 1000 --url http://localhost:8080
+      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8080
+      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8080 --validate 200:80,500:20
+      - go run main.go http --iterations 8 --delay 100 --url http://localhost:8080 --validate 200:80,500:20 --negate-validate
     environment:
       - GOPATH=/drone/
   build:
