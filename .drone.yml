@@ -15,9 +15,11 @@ pipeline:
   smoke-test:
     image: qnib/golang
     commands:
-      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8080
-      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8080 --validate 200:80,500:20
-      - go run main.go http --iterations 8 --delay 100 --url http://localhost:8080 --validate 200:80,500:20 --negate-validate
+      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8081
+      - go run main.go http --iterations 10 --delay 100 --url http://localhost:8081 --validate 200:80,500:20
+      - go run main.go http --iterations 8 --delay 100 --url http://localhost:8081 --validate 200:80,500:20 --negate-validate
+      - go run main.go ipfs --iterations 10 --delay 100 --validate 200:80,500:20 --swagger-path resources/services/hello-service/swagger.json
+      - go run main.go ipfs --iterations 10 --delay 100 --validate 200:80,500:20 --swagger-id QmeX24C4mcpvTJo64DREzpWEpHKgodY7BahG7oK3JPS4jB
     environment:
       - GOPATH=/drone/
   build:
@@ -44,10 +46,9 @@ pipeline:
     username: drone
 
 services:
-#  ipfs:
-#   image: cp2017/ipfs
-#   container_name: ipfs
-#   pull: true
+  ipfs:
+   image: cp2017/ipfs
+   pull: true
 #  geth:
 #   image: cp2017/geth
 #   pull: true
@@ -58,4 +59,6 @@ services:
    image: cp2017/testhttpd
    container_name: testhttpd
    command: "200,200,200,200,500"
+   environment:
+       - HTTP_PORT=8081
    pull: true
