@@ -41,6 +41,10 @@ func main() {
 				Usage: "Path to service's swagger.json file to be added",
 			},
 			cli.StringFlag{
+				Name:  "swagger-id",
+				Usage: "IPFS id to service's swagger.json file to be parsed",
+			},
+			cli.StringFlag{
 				Name:  "iterations,i",
 				Value: "10",
 				Usage: "Amount of queries to be made",

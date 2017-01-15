@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -31,6 +32,7 @@ import (
 func MonitorIPFS(c *cli.Context) error {
 	log.Println("Start IPFS Monitor")
 	swagger_path := c.String("swagger-path")
+	swagger_id := c.String("swagger-id")
 	var url string
 	schemes := []string{"http"}
 	if swagger_path != "" {
@@ -50,6 +52,21 @@ func MonitorIPFS(c *cli.Context) error {
 		url = fmt.Sprintf("%s%s", swag.Host, swag.BasePath)
 	} else {
 		url = c.String("url")
+	}
+	if swagger_id != "" {
+		s := shell.NewShell("http://localhost:5001")
+		var swag util.SwaggerJSON
+		stream, err := s.Cat(swagger_id)
+		if err != nil {
+			log.Println("error:", err)
+		}
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(stream)
+		err = json.Unmarshal(buf.Bytes(), &swag)
+		if err != nil {
+			log.Println("error:", err)
+		}
+		url = fmt.Sprintf("%s%s", swag.Host, swag.BasePath)
 	}
 	validate := c.String("validate")
 	iterations := c.Int("iterations")

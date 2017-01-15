@@ -18,7 +18,8 @@ pipeline:
       - go run main.go http --iterations 10 --delay 100 --url http://localhost:8081
       - go run main.go http --iterations 10 --delay 100 --url http://localhost:8081 --validate 200:80,500:20
       - go run main.go http --iterations 8 --delay 100 --url http://localhost:8081 --validate 200:80,500:20 --negate-validate
-      - go run main.go ipfs --iterations 10 --delay 100 --swagger-path resources/services/hello-service/swagger.json
+      - go run main.go ipfs --iterations 10 --delay 100 --validate 200:80,500:20 --swagger-path resources/services/hello-service/swagger.json
+      - go run main.go ipfs --iterations 10 --delay 100 --validate 200:80,500:20 --swagger-id QmeX24C4mcpvTJo64DREzpWEpHKgodY7BahG7oK3JPS4jB
     environment:
       - GOPATH=/drone/
   build:
