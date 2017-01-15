@@ -21,22 +21,22 @@
 			"revisionTime": "2016-12-05T21:41:38Z"
 		},
 		{
-			"checksumSHA1": "vgbB00MkBhEHceHmECTiH0q7D+g=",
+			"checksumSHA1": "CuE0dw49GiUs/N6y0hF7ztcSgdg=",
 			"path": "github.com/cp2017/go-client",
-			"revision": "e78285c1a4b65bfb5807d815c7963dfec832faa3",
-			"revisionTime": "2017-01-15T11:27:38Z"
+			"revision": "c298255a6785ea5e14f4d92cf4454d69b4890734",
+			"revisionTime": "2017-01-15T11:30:14Z"
 		},
 		{
 			"checksumSHA1": "xBWeM4eo27DHFI9coAHw7hzXXfo=",
 			"path": "github.com/cp2017/go-client/cmd",
-			"revision": "e78285c1a4b65bfb5807d815c7963dfec832faa3",
-			"revisionTime": "2017-01-15T11:27:38Z"
+			"revision": "c298255a6785ea5e14f4d92cf4454d69b4890734",
+			"revisionTime": "2017-01-15T11:30:14Z"
 		},
 		{
 			"checksumSHA1": "q8vGth6syUyeEhs0kC/LU3KDeFo=",
 			"path": "github.com/cp2017/go-client/util",
-			"revision": "e78285c1a4b65bfb5807d815c7963dfec832faa3",
-			"revisionTime": "2017-01-15T11:27:38Z"
+			"revision": "c298255a6785ea5e14f4d92cf4454d69b4890734",
+			"revisionTime": "2017-01-15T11:30:14Z"
 		},
 		{
 			"checksumSHA1": "dvabztWVQX8f6oMLRyv4dLH+TGY=",
