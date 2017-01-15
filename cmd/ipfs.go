@@ -15,17 +15,48 @@
 package cmd
 
 import (
-    "fmt"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
 
-    "github.com/urfave/cli"
-    //"github.com/ipfs/go-ipfs-api"
-    //"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ipfs/go-ipfs-api"
+	"github.com/urfave/cli"
+
+	"github.com/cp2017/go-client/util"
 )
 
 // MonitorIPFS a given service from ethereum
 func MonitorIPFS(c *cli.Context) error {
-    fmt.Println(c.FlagNames())
-    //cli, _ := ethclient.Dial("http://localhost:8545")
-    //_ = cli
-    return nil
+	log.Println("Start IPFS Monitor")
+	swagger_path := c.String("swagger-path")
+	var url string
+	schemes := []string{"http"}
+	if swagger_path != "" {
+		s := shell.NewShell("http://localhost:5001")
+		hash, _ := s.AddDir(swagger_path)
+		fmt.Println(hash)
+		var swag util.SwaggerJSON
+		file, err := ioutil.ReadFile(swagger_path)
+		if err != nil {
+			fmt.Printf("File error: %v\n", err)
+			os.Exit(1)
+		}
+		err = json.Unmarshal(file, &swag)
+		if err != nil {
+			log.Println("error:", err)
+		}
+		url = fmt.Sprintf("%s%s", swag.Host, swag.BasePath)
+	} else {
+		url = c.String("url")
+	}
+	validate := c.String("validate")
+	iterations := c.Int("iterations")
+	delay := c.Int("delay")
+	negate := c.Bool("negate-validate")
+	for _, scheme := range schemes {
+		util.Monitor(fmt.Sprintf("%s://%s", scheme, url), validate, iterations, delay, negate)
+	}
+	return nil
 }
